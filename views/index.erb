@@ -1,0 +1,19 @@
+<h1>Welcome to Division Manager</h1>
+
+<h2>Current Divisions</h2>
+
+<% if @divisions.any? %>
+  <h3>Here are all current divisions</h3>
+    <ul>
+      <% @divisions.each do |division| %>
+        <li><a href="/divisions/<%= division.id() %>"><%= division.division() %></a></li>
+      <% end %>
+    </ul>
+
+<% else %>
+  <h3>There are no divisions</h3>
+<% end %>
+
+<% @divisions.each() do |division| %>
+<li><%= division.name %> <a href="/divisions/<%=division.id() %>/edit">Update division name</a></li>
+<% end %>
