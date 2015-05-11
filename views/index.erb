@@ -1,19 +1,25 @@
 <h1>Welcome to Division Manager</h1>
 
+<form action="/divisions" method="post">
+  <div class="form-group">
+    <label for="division">Add a new division:</label>
+    <input id="division" name="division" type="text">
+  </div>
+  <button type="submit" class="btn-success">Add division</button>
+</form>
+
+
+
 <h2>Current Divisions</h2>
 
 <% if @divisions.any? %>
   <h3>Here are all current divisions</h3>
     <ul>
       <% @divisions.each do |division| %>
-        <li><a href="/divisions/<%= division.id() %>"><%= division.division() %></a></li>
+        <li><a href="/divisions/<%= division.id() %>"><%= division.division() %>[<a href="/divisions/<%=division.id() %>/edit">x</a>]</li>
       <% end %>
     </ul>
 
 <% else %>
   <h3>There are no divisions</h3>
-<% end %>
-
-<% @divisions.each() do |division| %>
-<li><%= division.name %> <a href="/divisions/<%=division.id() %>/edit">Update division name</a></li>
 <% end %>
